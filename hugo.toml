@@ -1,0 +1,53 @@
+baseURL = 'https://aaydenn.github.io/'
+languageCode = 'en-us'
+title = 'atakan ayden'
+theme = 'anubis2'
+
+[params.author]
+name = "Atakan Ayden"
+email = "atakanayden@gmail.com"
+location = "Jena, Germany"
+
+[markup.goldmark.renderer]
+unsafe = true # true | false; Enable unsafe mode to have a better experience
+
+[markup.highlight]
+style = 'base16-snazzy' # Highlight.js style
+
+[pagination]
+pagerSize = 10
+
+[params]
+description = "A personal blog about art, bioinformatics and some irrelevant ideas"
+dateFormat = "2006-01-02"
+readMore = true
+
+copyCodeButton = true
+rssAsSocialIcon = true
+locale = "en-us"
+math = true # true: enable mathjax globally (default is false)
+toc = true
+
+social = [
+    { id = "github", url = "https://github.com/aaydenn" },
+    { id = "linkedin", url = "https://www.linkedin.com/in/atakanayden/" },
+    { id = "email", url = "atakanayden@gmail.com" },
+]
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 2
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 3
+
+[[menu.main]]
+name = "Archive"
+identifier = "archive"
+url = "/posts/"
+weight = 4
