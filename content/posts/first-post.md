@@ -22,31 +22,3 @@ This code helps you to see the changes you make to the website in `real time`.
 
 hugo server -D
 ```
-q
-q
-q
-q
-q
-q
-q
-q
-
-q
-q
-
-
-q
-q
-
-q
-
-
-q
-
-q
-
-q
-
-q
-
-q
