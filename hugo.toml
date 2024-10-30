@@ -3,6 +3,10 @@ languageCode = 'en-us'
 title = 'atakan ayden'
 theme = 'anubis2'
 
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
 [params.author]
 name = "Atakan Ayden"
 email = "atakanayden@gmail.com"
