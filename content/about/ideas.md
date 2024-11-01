@@ -1,6 +1,6 @@
 +++
 date = '2024-11-01T16:15:15+01:00'
-draft = true
+draft = false
 tags = ['ideas']
 title = 'Ideas'
 +++
