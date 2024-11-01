@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Abouts on atakan ayden</title>
-    <link>/about/</link>
-    <description>atakan ayden (Abouts)</description>
+    <title>Ideas on atakan ayden</title>
+    <link>/tags/ideas/</link>
+    <description>atakan ayden (Ideas)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -21,7 +21,7 @@
     
     <lastBuildDate>Fri, 01 Nov 2024 16:15:15 +0100</lastBuildDate>
     
-    <atom:link href="/about/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/ideas/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -42,16 +42,6 @@
 &lt;li&gt;Finding prime factors of a number. Comparison of different algorithms like trial division, trial division with 2 and 3, Pollard&amp;rsquo;s rho, quadratic sieve, etc. &lt;a href=&#34;https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes&#34;&gt;see Sieve of Eratosthenes&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Dali&amp;rsquo;s art through scientific progress.&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>/about/about-me/</link>
-      <pubDate>Wed, 30 Oct 2024 18:48:16 +0100</pubDate>
-      <author>atakanayden@gmail.com (Atakan Ayden)</author>
-      <guid>/about/about-me/</guid>
-      <description>&lt;p&gt;Hi, my name is Atakan. I&amp;rsquo;m a computational biologist by training, but I&amp;rsquo;m also interested in software development and data science.&lt;/p&gt;
 </description>
     </item>
     
