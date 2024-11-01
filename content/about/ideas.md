@@ -1,6 +1,7 @@
 +++
 date = '2024-11-01T16:15:15+01:00'
 draft = true
+tags = ['ideas']
 title = 'Ideas'
 +++
 
