@@ -1,9 +1,10 @@
----
++++
 title: "Can we cluster countries based on trend lines through time?"
 output: html_document
+tags = ["r", "python", "worlddata", "distance"]
 draft: true
 date: "2024-11-21"
----
++++
 
 ```{r}
 library(ggplot2)
