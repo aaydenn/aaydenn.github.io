@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Genomic File Formats - atakan ayden</title>
+
+<meta name="description" content="In bioinformatics, various file formats are used to represent genomic data. In my analysis, I use BED files, GFF/GTF files, NarrowPeak files, BedGraph files, and BigWig files. I decided to create a quick reference that briefly explains each file type and includes an example table showing the columns of these files.
+
+
+    
+        #
+    
+    BED Files (Browser Extensible Data)
+
+
+BED files are tab-delimited text files that define genomic regions. They typically contain three mandatory columns and can have additional optional columns.">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="https://aaydenn.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://aaydenn.github.io/favicon.png">
+
+
+
+
+
+
+
+
+    
+
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.184a655c5ad8596648622468e6696abf0cf0a2cf8266df17b4f7a36fe9c97551.css" integrity="sha256-GEplXFrYWWZIYiRo5mlqvwzwos&#43;CZt8XtPejb&#43;nJdVE=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.c4c04b3ef88e3d619ad4c7ee5e03048422bc55c4fefdc1f07657c1133670aa22.css" integrity="sha256-xMBLPviOPWGa1MfuXgMEhCK8VcT&#43;/cHwdlfBEzZwqiI=">
+    
+
+
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="/css/style.min.21c5d8fe0a79d623b0adc1ce4bd4f6dd2c05cd939c9aaaa966ba7186b1464f4d.css" integrity="sha256-IcXY/gp51iOwrcHOS9T23SwFzZOcmqqpZrpxhrFGT00=">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <script src="/js/script.min.08f04d96386c73c9bf4d160333f8f448c05a6e01c06770542ee0e013954ce930.js" type="text/javascript" charset="utf-8" integrity="sha256-CPBNljhsc8m/TRYDM/j0SMBabgHAZ3BULuDgE5VM6TA="></script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header">
+            
+                <div class="header-top">
+    <div class="header-top-left">
+        <h1 class="site-title noselect">
+    <a href="/">atakan ayden</a>
+</h1>
+
+        
+
+
+
+
+
+
+
+    
+        <div class="theme-switcher">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+
+
+</span>
+
+        </div>
+    
+
+    <script>
+        const STORAGE_KEY = 'user-color-scheme'
+        const defaultTheme = "light"
+
+        let currentTheme
+        let switchButton
+        let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+        function switchTheme(e) {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            if (localStorage) localStorage.setItem(STORAGE_KEY, currentTheme);
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        const autoChangeScheme = e => {
+            currentTheme = e.matches ? 'dark' : 'light'
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            changeGiscusTheme(currentTheme);
+            document.body.dispatchEvent(new CustomEvent(currentTheme + "-theme-set"));
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            switchButton = document.querySelector('.theme-switcher')
+            currentTheme = detectCurrentScheme()
+
+            if (currentTheme === 'auto') {
+                autoChangeScheme(autoDefinedScheme);
+                autoDefinedScheme.addListener(autoChangeScheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', currentTheme)
+            }
+
+            if (switchButton) {
+                switchButton.addEventListener('click', switchTheme, false)
+            }
+
+            showContent();
+        })
+
+        function detectCurrentScheme() {
+            if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+                return localStorage.getItem(STORAGE_KEY)
+            }
+            if (defaultTheme) {
+                return defaultTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function showContent() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = 1;
+        }
+
+        function changeGiscusTheme (theme) {
+            function sendMessage(message) {
+              const iframe = document.querySelector('iframe.giscus-frame');
+              if (!iframe) return;
+              iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            }
+
+            sendMessage({
+              setConfig: {
+                theme: theme
+              }
+            });
+        }
+    </script>
+
+
+        <ul class="social-icons noselect">
+
+
+    
+        <li>
+            <a href="https://github.com/aaydenn" title="Github" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://www.linkedin.com/in/atakanayden/" title="Linkedin" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" /><path d="M8 11l0 5" /><path d="M8 8l0 .01" /><path d="M12 16l0 -5" /><path d="M16 16v-3a2 2 0 0 0 -4 0" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="atakanayden@gmail.com" title="Email" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+
+
+
+
+
+    <li>
+            <a href="/index.xml" title="RSS" rel="me">
+            <span class="inline-svg">
+
+    
+
+
+    
+    
+    
+    
+    
+
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-rss"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 4a16 16 0 0 1 16 16" /><path d="M4 11a9 9 0 0 1 9 9" /></svg>
+
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+
+    </div>
+    <div class="header-top-right">
+
+    </div>
+</div>
+
+
+    <nav class="noselect">
+        
+        
+        <a class="" href="https://aaydenn.github.io/about/" title="">About</a>
+        
+        <a class="" href="https://aaydenn.github.io/tags/" title="">Tags</a>
+        
+        <a class="" href="https://aaydenn.github.io/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1">
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">Genomic File Formats</h1>
+                
+
+            </header>
+            
+
+    
+
+
+
+<div class="post-info noselect">
+    
+        <div class="post-date dt-published">
+            <time datetime="2024-12-03">2024-12-03</time>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="/posts/file-formats/">/posts/file-formats/</a>
+    <a href="https://aaydenn.github.io/" class="p-name p-author post-hidden-author h-card" rel="me">map[email:atakanayden@gmail.com location:Jena, Germany name:Atakan Ayden]</a>
+
+
+    <div class="post-taxonomies">
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="/tags/genomics/">#Genomics</a></li>
+                
+                    
+                    <li><a href="/tags/bioinformatics/">#Bioinformatics</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+        </div>
+        
+
+  
+  
+
+
+
+
+  
+  
+  
+  <details class="toc noselect">
+    <summary>Table of Contents</summary>
+    <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#bed-files-browser-extensible-data">BED Files (Browser Extensible Data)</a>
+      <ul>
+        <li><a href="#example">Example:</a></li>
+      </ul>
+    </li>
+    <li><a href="#gffgtf-files-general-feature-format--gene-transfer-format">GFF/GTF Files (General Feature Format / Gene Transfer Format)</a>
+      <ul>
+        <li><a href="#example-1">Example:</a></li>
+      </ul>
+    </li>
+    <li><a href="#narrowpeak-files">NarrowPeak Files</a>
+      <ul>
+        <li><a href="#example-2">Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#bedgraph-files">BedGraph Files</a>
+      <ul>
+        <li><a href="#example-3">Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#converting-file-formats">Converting File Formats</a>
+      <ul>
+        <li><a href="#bed-to-gtf-conversion">BED to GTF Conversion</a></li>
+        <li><a href="#bambed-to-bedgraph-conversion">BAM/BED to BedGraph Conversion</a></li>
+        <li><a href="#bedgraph-to-bigwigbigwig-to-bedgraph-conversion">BedGraph to BigWig/BigWig to BedGraph Conversion</a></li>
+        <li><a href="#convert-narrowpeak-to-bedgraph">Convert NarrowPeak to BedGraph</a></li>
+        <li><a href="#convert-narrowpeak-to-gtf">Convert NarrowPeak to GTF</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+  </details>
+  
+
+
+
+<script>
+  var toc = document.querySelector(".toc");
+  if (toc) {
+    toc.addEventListener("click", function () {
+      if (event.target.tagName !== "A") {
+        event.preventDefault();
+        if (this.open) {
+          this.open = false;
+          this.classList.remove("expanded");
+        } else {
+          this.open = true;
+          this.classList.add("expanded");
+        }
+      }
+    });
+  }
+</script>
+
+        <div class="content e-content">
+            <p>In bioinformatics, various file formats are used to represent genomic data. In my analysis, I use BED files, GFF/GTF files, NarrowPeak files, BedGraph files, and BigWig files. I decided to create a quick reference that briefly explains each file type and includes an example table showing the columns of these files.</p>
+<h2 id="bed-files-browser-extensible-data" >
+<div>
+    <a href="#bed-files-browser-extensible-data">
+        #
+    </a>
+    BED Files (Browser Extensible Data)
+</div>
+</h2>
+<p>BED files are tab-delimited text files that define genomic regions. They typically contain three mandatory columns and can have additional optional columns.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Column</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Chromosome (e.g., chr1) or Scaffold (e.g., scaffold10671)</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Start position (0-based)</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>End position (1-based)</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>Name (optional)</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>Score (optional, 0-1000)</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td>Strand (optional, &ldquo;+&rdquo;, &ldquo;-&rdquo;, or &ldquo;.&rdquo;)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="example" >
+<div>
+    <a href="#example">
+        ##
+    </a>
+    Example:
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chr1    <span style="color:#ff9f43">1000</span>    <span style="color:#ff9f43">5000</span>    peak1   <span style="color:#ff9f43">960</span>     +
+</span></span><span style="display:flex;"><span>chr2    <span style="color:#ff9f43">2000</span>    <span style="color:#ff9f43">6000</span>    peak2   <span style="color:#ff9f43">850</span>     -
+</span></span></code></pre></div><h2 id="gffgtf-files-general-feature-format--gene-transfer-format" >
+<div>
+    <a href="#gffgtf-files-general-feature-format--gene-transfer-format">
+        #
+    </a>
+    GFF/GTF Files (General Feature Format / Gene Transfer Format)
+</div>
+</h2>
+<p>GFF and GTF files describe genomic features with attributes and follow a nine-column format. GTF is a stricter version of GFF.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Column</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Chromosome (e.g., chr1)</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Source (e.g., ENSEMBL)</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>Feature type (e.g., gene, exon)</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>Start position (1-based)</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>End position</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td>Score (. if not applicable)</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td>Strand (+, -, or .)</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td>Frame (0, 1, 2, or .)</td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td>Attributes (key-value pairs)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="example-1" >
+<div>
+    <a href="#example-1">
+        ##
+    </a>
+    Example:
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chr1    ENSEMBL gene    <span style="color:#ff9f43">1000</span>    <span style="color:#ff9f43">5000</span>    .       +       .       gene_id <span style="color:#5af78e">&#34;gene1&#34;</span>; gene_name <span style="color:#5af78e">&#34;GeneA&#34;</span>;
+</span></span><span style="display:flex;"><span>chr1    ENSEMBL exon    <span style="color:#ff9f43">1000</span>    <span style="color:#ff9f43">1200</span>    .       +       .       gene_id <span style="color:#5af78e">&#34;gene1&#34;</span>; exon_id <span style="color:#5af78e">&#34;exon1&#34;</span>;
+</span></span></code></pre></div><h2 id="narrowpeak-files" >
+<div>
+    <a href="#narrowpeak-files">
+        #
+    </a>
+    NarrowPeak Files
+</div>
+</h2>
+<p>NarrowPeak files are an extension of BED files, primarily used for narrow peak data in ChIP-seq. For example, the peak calling algorithm <a href="https://github.com/macs3-project/MACS">MACS</a> produces <strong>.narrowPeak</strong> formatted files.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Column</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Chromosome</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Start position</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>End position</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>Name</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>Score</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td>Strand</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td>Signal value (enrichment score)</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td>p-value (-log10 p-value)</td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td>q-value (-log10 q-value)</td>
+      </tr>
+      <tr>
+          <td>10</td>
+          <td>Peak position within the region</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="example-2" >
+<div>
+    <a href="#example-2">
+        ##
+    </a>
+    Example
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chr1    <span style="color:#ff9f43">1000</span>    <span style="color:#ff9f43">1500</span>    peak1   <span style="color:#ff9f43">960</span>     .       5.2     3.5     2.3     <span style="color:#ff9f43">200</span>
+</span></span><span style="display:flex;"><span>chr1    <span style="color:#ff9f43">2000</span>    <span style="color:#ff9f43">2500</span>    peak2   <span style="color:#ff9f43">850</span>     .       4.8     3.2     1.9     <span style="color:#ff9f43">150</span>
+</span></span></code></pre></div><h2 id="bedgraph-files" >
+<div>
+    <a href="#bedgraph-files">
+        #
+    </a>
+    BedGraph Files
+</div>
+</h2>
+<p>BedGraph files are used to display continuous-valued data over genomic regions. This format represents the coverage data as discrete genomic intervals.</p>
+<p>BigWig files are a binary version of BedGraph files, optimized for fast access and visualization in genome browsers. They cannot be viewed directly but can be generated from BedGraph files.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Column</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>Chromosome</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>Start position</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>End position</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>Value (e.g., coverage, intensity)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="example-3" >
+<div>
+    <a href="#example-3">
+        ##
+    </a>
+    Example
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chr1    <span style="color:#ff9f43">1000</span>    <span style="color:#ff9f43">1500</span>    3.5
+</span></span><span style="display:flex;"><span>chr1    <span style="color:#ff9f43">1500</span>    <span style="color:#ff9f43">2000</span>    2.1
+</span></span></code></pre></div><h2 id="converting-file-formats" >
+<div>
+    <a href="#converting-file-formats">
+        #
+    </a>
+    Converting File Formats
+</div>
+</h2>
+<p>Can one convert one file to another? yes of course. you need some convertion tools or workflows to achieve such task (e.g., <a href="https://bedtools.readthedocs.io/en/latest/">BEDTools</a>, <a href="https://hgdownload.soe.ucsc.edu/admin/exe/">UCSC tools</a>, <a href="https://deeptools.readthedocs.io/en/latest/">deepTools</a> ..).</p>
+<h3 id="bed-to-gtf-conversion" >
+<div>
+    <a href="#bed-to-gtf-conversion">
+        ##
+    </a>
+    BED to GTF Conversion
+</div>
+</h3>
+<p>Converting a BED file to a GTF file involves transforming BED regions into GTF features.</p>
+<ul>
+<li><strong>Example using awk</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#5af78e">&#39;BEGIN{OFS=&#34;\t&#34;} {print $1, &#34;custom&#34;, &#34;exon&#34;, $2+1, $3, &#34;.&#34;, &#34;.&#34;, &#34;.&#34;, &#34;gene_id \&#34;&#34;$4&#34;\&#34;;&#34;}&#39;</span> input.bed &gt; output.gtf
+</span></span></code></pre></div><ul>
+<li><code>BEGIN{OFS=&quot;\t&quot;}</code> sets the Output Field Separator (OFS) to a tab character.</li>
+<li>The <code>print</code> statement creates the 9 GTF columns which are first column from BED (<code>$1</code>), hard-coded source field (<code>&quot;custom&quot;</code>), hard-coded feature type (<code>&quot;exon&quot;</code>), second column from BED plus 1 (<code>$2+1</code>), third column from BED (<code>$3</code>), three dots for score, strand, and frame fields (<code>&quot;.&quot;, &quot;.&quot;, &quot;.&quot;</code>) and attributes field (<code>&quot;gene_id \&quot;&quot;$4&quot;\&quot;;&quot;</code>).</li>
+</ul>
+<h3 id="bambed-to-bedgraph-conversion" >
+<div>
+    <a href="#bambed-to-bedgraph-conversion">
+        ##
+    </a>
+    BAM/BED to BedGraph Conversion
+</div>
+</h3>
+<p>To convert a BED file to a BedGraph file, you need to include a value for each region. This can represent signal intensity or read depth or covarage.</p>
+<p><strong>Example of BAM to BedGraph using BEDTools</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bedtools genomecov -ibam input.bam -bg &gt; output.bedgraph
+</span></span></code></pre></div><ul>
+<li><code>bedtools genomecov</code> is a command from the BEDTools suite used to compute the coverage of features in a BED file across a genome.</li>
+<li><code>-ibam </code> flag specifies that the input is in BAM format and <code>input.bam</code> is the input BAM file containing aligned sequencing reads.</li>
+<li><code>-bg</code> option tells the tool to output in BedGraph format.</li>
+</ul>
+<p><strong>Example of BAM to BedGraph using Samtools and awk</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#78787e"># First, sort the bam file</span>
+</span></span><span style="display:flex;"><span>samtools sort -o sorted_input.bam input.bam
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Second, calculate depth and convert to BedGraph</span>
+</span></span><span style="display:flex;"><span>samtools depth -a sorted_input.bam | awk <span style="color:#5af78e">&#39;BEGIN {OFS=&#34;\t&#34;} {print $1, $2-1, $2, $3}&#39;</span> &gt; output.bedgraph
+</span></span></code></pre></div><ul>
+<li>
+<p>First step is Sorting the BAM file.</p>
+<ul>
+<li><code>samtools sort</code> is a command used to sort a BAM file.</li>
+<li><code>-o</code> flag pecifies the output of sorted BAM file (<code>sorted_input.bam</code>).</li>
+<li><code>input.bam</code> is the BAM file to be sorted.</li>
+</ul>
+</li>
+<li>
+<p>Second step is converting to BedGraph.</p>
+<ul>
+<li><code>samtools depth</code> is a command for calculating covarage at each position and <code>-a</code> flag reports coverage at all positions, including those with zero coverage.</li>
+<li>As in BED to GTF conversion, <code>BEGIN {OFS=&quot;\t&quot;}</code> sets output field separator to tab, <code>{print $1, $2-1, $2, $3}</code>prints namely chromosome, start position (converted to 0-based), end position and coverage value.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Example of BED to BedGraph using BEDTools</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bedtools genomecov -i input.bed -bg -g genome.txt &gt; output.bedgraph
+</span></span></code></pre></div><ul>
+<li>This command follows the same principle as the BAM to BedGraph conversion using BEDTools, with one key difference: when using a BED file as input, you must provide chromosome sizes.</li>
+<li>The flag <code>-i</code> specifies the input BED file (input.bed) containing the genomic regions for which coverage is to be calculated.</li>
+<li>Last option <code>-g</code> specifies a genome file (<code>genome.txt</code>) that contains the sizes of the chromosomes.</li>
+</ul>
+<h3 id="bedgraph-to-bigwigbigwig-to-bedgraph-conversion" >
+<div>
+    <a href="#bedgraph-to-bigwigbigwig-to-bedgraph-conversion">
+        ##
+    </a>
+    BedGraph to BigWig/BigWig to BedGraph Conversion
+</div>
+</h3>
+<p>BigWig is a compressed, indexed format designed for efficient visualization in genome browsers. You can convert between BigWig and BedGraph formats using UCSC Genome Browser tools such as <code>bedGraphToBigWig</code> and <code>bigWigToBedGraph</code>.</p>
+<p><strong>Example using UCSC tool</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#78787e"># Convert BedGraph to BigWig</span>
+</span></span><span style="display:flex;"><span>bedGraphToBigWig input.bedgraph genome.txt output.bw
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#78787e"># Convert BigWig to BedGraph</span>
+</span></span><span style="display:flex;"><span>bigWigToBedGraph input.bw output.bedgraph
+</span></span></code></pre></div><ul>
+<li><code>bedGraphToBigWig</code> and <code>bigWigToBedGraph</code> are command-line tools from the UCSC Genome Browser utilities.</li>
+<li><code>input.bedgraph</code> file contains continuous-valued data.</li>
+<li>As with previous conversions, the genome file (<code>genome.txt</code>) containing chromosome sizes is mandatory for the BedGraph to BigWig conversion</li>
+<li><code>output.bw</code> is the resulting BigWig file, which stores the same data in an indexed binary format.</li>
+</ul>
+<blockquote>
+<p>Since NarrowPeak files share the same column structure as BED files, you can use similar tools to convert them into BedGraph, BigWig, or GTF formats.</p>
+</blockquote>
+<h3 id="convert-narrowpeak-to-bedgraph" >
+<div>
+    <a href="#convert-narrowpeak-to-bedgraph">
+        ##
+    </a>
+    Convert NarrowPeak to BedGraph
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#5af78e">&#39;BEGIN{OFS=&#34;\t&#34;} {print $1, $2, $3, $7}&#39;</span> input.narrowPeak &gt; output.bedgraph
+</span></span></code></pre></div><ul>
+<li>This <code>awk</code> command extracts the chromosome, start position, end position, and signal value (<code>$7</code>) to create a BedGraph file.</li>
+</ul>
+<h3 id="convert-narrowpeak-to-gtf" >
+<div>
+    <a href="#convert-narrowpeak-to-gtf">
+        ##
+    </a>
+    Convert NarrowPeak to GTF
+</div>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#5af78e">&#39;BEGIN{OFS=&#34;\t&#34;} {print $1, &#34;custom&#34;, &#34;peak&#34;, $2+1, $3, &#34;.&#34;, $6, &#34;.&#34;, &#34;peak_id \&#34;&#34;$4&#34;\&#34;; signal_value \&#34;&#34;$7&#34;\&#34;;&#34;}&#39;</span> input.narrowPeak &gt; output.gtf
+</span></span></code></pre></div><ul>
+<li>This <code>awk</code> command formats the NarrowPeak data into GTF format, adjusting the start position to 1-based and including attributes like <code>peak_id</code> and <code>signal_value</code>.</li>
+</ul>
+<blockquote>
+<p>If needed, sort BedGraph files using the Unix sort command:</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sort -k1,1 -k2,2n input.bedgraph &gt; sorted.bedgraph
+</span></span></code></pre></div>
+        </div>
+
+    </article>
+
+    
+    
+
+    
+        
+        
+    
+
+    
+
+    
+        
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    
+
+        </main>
+        
+            <footer class="common-footer noselect">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+
+        <div style="display: flex; align-items: center; gap:8px">
+            ©  Atakan Ayden,  2024
+            
+        </div>
+        <div style="display:flex;align-items: center">
+            
+            
+            
+            
+            
+            
+        </div>
+        <div>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/Junyi-99/hugo-theme-anubis2">Anubis2</a>.<br>
+            
+
+        </div>
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://aaydenn.github.io/ class="p-name u-url url fn" rel="me">map[email:atakanayden@gmail.com location:Jena, Germany name:Atakan Ayden]</a>
+
+    
+
+    
+</p>
+
+</footer>
+
+        
+    </div>
+</body>
+</html>

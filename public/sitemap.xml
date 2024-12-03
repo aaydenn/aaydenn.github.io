@@ -2,22 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+        <loc>https://aaydenn.github.io/</loc>
+        <lastmod>2024-12-03T14:50:20+01:00</lastmod>
+      </url><url>
+        <loc>https://aaydenn.github.io/tags/bioinformatics/</loc>
+        <lastmod>2024-12-03T14:50:20+01:00</lastmod>
+      </url><url>
+        <loc>https://aaydenn.github.io/posts/file-formats/</loc>
+        <lastmod>2024-12-03T14:50:20+01:00</lastmod>
+      </url><url>
+        <loc>https://aaydenn.github.io/tags/genomics/</loc>
+        <lastmod>2024-12-03T14:50:20+01:00</lastmod>
+      </url><url>
+        <loc>https://aaydenn.github.io/posts/</loc>
+        <lastmod>2024-12-03T14:50:20+01:00</lastmod>
+      </url><url>
+        <loc>https://aaydenn.github.io/tags/</loc>
+        <lastmod>2024-12-03T14:50:20+01:00</lastmod>
+      </url><url>
         <loc>https://aaydenn.github.io/about/</loc>
         <lastmod>2024-11-01T16:15:15+01:00</lastmod>
       </url><url>
-        <loc>https://aaydenn.github.io/</loc>
+        <loc>https://aaydenn.github.io/tags/ideas/</loc>
+        <lastmod>2024-11-01T16:15:15+01:00</lastmod>
+      </url><url>
+        <loc>https://aaydenn.github.io/about/ideas/</loc>
         <lastmod>2024-11-01T16:15:15+01:00</lastmod>
       </url><url>
         <loc>https://aaydenn.github.io/about/about-me/</loc>
         <lastmod>2024-10-30T18:48:16+01:00</lastmod>
       </url><url>
         <loc>https://aaydenn.github.io/tags/personal/</loc>
-        <lastmod>2024-10-30T18:31:11+01:00</lastmod>
-      </url><url>
-        <loc>https://aaydenn.github.io/posts/</loc>
-        <lastmod>2024-10-30T18:31:11+01:00</lastmod>
-      </url><url>
-        <loc>https://aaydenn.github.io/tags/</loc>
         <lastmod>2024-10-30T18:31:11+01:00</lastmod>
       </url><url>
         <loc>https://aaydenn.github.io/posts/test-post/</loc>

@@ -19,10 +19,376 @@
     
 
     
-    <lastBuildDate>Wed, 30 Oct 2024 18:31:11 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 03 Dec 2024 14:50:20 +0100</lastBuildDate>
     
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Genomic File Formats</title>
+      <link>/posts/file-formats/</link>
+      <pubDate>Tue, 03 Dec 2024 14:50:20 +0100</pubDate>
+      <author>atakanayden@gmail.com (Atakan Ayden)</author>
+      <guid>/posts/file-formats/</guid>
+      <description>&lt;p&gt;In bioinformatics, various file formats are used to represent genomic data. In my analysis, I use BED files, GFF/GTF files, NarrowPeak files, BedGraph files, and BigWig files. I decided to create a quick reference that briefly explains each file type and includes an example table showing the columns of these files.&lt;/p&gt;
+&lt;h2 id=&#34;bed-files-browser-extensible-data&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#bed-files-browser-extensible-data&#34;&gt;
+        #
+    &lt;/a&gt;
+    BED Files (Browser Extensible Data)
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;BED files are tab-delimited text files that define genomic regions. They typically contain three mandatory columns and can have additional optional columns.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Column&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;Chromosome (e.g., chr1) or Scaffold (e.g., scaffold10671)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;Start position (0-based)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;End position (1-based)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;Name (optional)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;5&lt;/td&gt;
+          &lt;td&gt;Score (optional, 0-1000)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;6&lt;/td&gt;
+          &lt;td&gt;Strand (optional, &amp;ldquo;+&amp;rdquo;, &amp;ldquo;-&amp;rdquo;, or &amp;ldquo;.&amp;rdquo;)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;example&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Example:
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chr1    &lt;span style=&#34;color:#ff9f43&#34;&gt;1000&lt;/span&gt;    &lt;span style=&#34;color:#ff9f43&#34;&gt;5000&lt;/span&gt;    peak1   &lt;span style=&#34;color:#ff9f43&#34;&gt;960&lt;/span&gt;     +
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chr2    &lt;span style=&#34;color:#ff9f43&#34;&gt;2000&lt;/span&gt;    &lt;span style=&#34;color:#ff9f43&#34;&gt;6000&lt;/span&gt;    peak2   &lt;span style=&#34;color:#ff9f43&#34;&gt;850&lt;/span&gt;     -
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;gffgtf-files-general-feature-format--gene-transfer-format&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#gffgtf-files-general-feature-format--gene-transfer-format&#34;&gt;
+        #
+    &lt;/a&gt;
+    GFF/GTF Files (General Feature Format / Gene Transfer Format)
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;GFF and GTF files describe genomic features with attributes and follow a nine-column format. GTF is a stricter version of GFF.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Column&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;Chromosome (e.g., chr1)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;Source (e.g., ENSEMBL)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;Feature type (e.g., gene, exon)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;Start position (1-based)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;5&lt;/td&gt;
+          &lt;td&gt;End position&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;6&lt;/td&gt;
+          &lt;td&gt;Score (. if not applicable)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;7&lt;/td&gt;
+          &lt;td&gt;Strand (+, -, or .)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;8&lt;/td&gt;
+          &lt;td&gt;Frame (0, 1, 2, or .)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;9&lt;/td&gt;
+          &lt;td&gt;Attributes (key-value pairs)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;example-1&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-1&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Example:
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chr1    ENSEMBL gene    &lt;span style=&#34;color:#ff9f43&#34;&gt;1000&lt;/span&gt;    &lt;span style=&#34;color:#ff9f43&#34;&gt;5000&lt;/span&gt;    .       +       .       gene_id &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;gene1&amp;#34;&lt;/span&gt;; gene_name &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;GeneA&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chr1    ENSEMBL exon    &lt;span style=&#34;color:#ff9f43&#34;&gt;1000&lt;/span&gt;    &lt;span style=&#34;color:#ff9f43&#34;&gt;1200&lt;/span&gt;    .       +       .       gene_id &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;gene1&amp;#34;&lt;/span&gt;; exon_id &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;exon1&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;narrowpeak-files&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#narrowpeak-files&#34;&gt;
+        #
+    &lt;/a&gt;
+    NarrowPeak Files
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;NarrowPeak files are an extension of BED files, primarily used for narrow peak data in ChIP-seq. For example, the peak calling algorithm &lt;a href=&#34;https://github.com/macs3-project/MACS&#34;&gt;MACS&lt;/a&gt; produces &lt;strong&gt;.narrowPeak&lt;/strong&gt; formatted files.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Column&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;Chromosome&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;Start position&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;End position&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;Name&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;5&lt;/td&gt;
+          &lt;td&gt;Score&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;6&lt;/td&gt;
+          &lt;td&gt;Strand&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;7&lt;/td&gt;
+          &lt;td&gt;Signal value (enrichment score)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;8&lt;/td&gt;
+          &lt;td&gt;p-value (-log10 p-value)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;9&lt;/td&gt;
+          &lt;td&gt;q-value (-log10 q-value)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;10&lt;/td&gt;
+          &lt;td&gt;Peak position within the region&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;example-2&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-2&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Example
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chr1    &lt;span style=&#34;color:#ff9f43&#34;&gt;1000&lt;/span&gt;    &lt;span style=&#34;color:#ff9f43&#34;&gt;1500&lt;/span&gt;    peak1   &lt;span style=&#34;color:#ff9f43&#34;&gt;960&lt;/span&gt;     .       5.2     3.5     2.3     &lt;span style=&#34;color:#ff9f43&#34;&gt;200&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chr1    &lt;span style=&#34;color:#ff9f43&#34;&gt;2000&lt;/span&gt;    &lt;span style=&#34;color:#ff9f43&#34;&gt;2500&lt;/span&gt;    peak2   &lt;span style=&#34;color:#ff9f43&#34;&gt;850&lt;/span&gt;     .       4.8     3.2     1.9     &lt;span style=&#34;color:#ff9f43&#34;&gt;150&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;bedgraph-files&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#bedgraph-files&#34;&gt;
+        #
+    &lt;/a&gt;
+    BedGraph Files
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;BedGraph files are used to display continuous-valued data over genomic regions. This format represents the coverage data as discrete genomic intervals.&lt;/p&gt;
+&lt;p&gt;BigWig files are a binary version of BedGraph files, optimized for fast access and visualization in genome browsers. They cannot be viewed directly but can be generated from BedGraph files.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Column&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;Chromosome&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2&lt;/td&gt;
+          &lt;td&gt;Start position&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;3&lt;/td&gt;
+          &lt;td&gt;End position&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4&lt;/td&gt;
+          &lt;td&gt;Value (e.g., coverage, intensity)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;example-3&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#example-3&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Example
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chr1    &lt;span style=&#34;color:#ff9f43&#34;&gt;1000&lt;/span&gt;    &lt;span style=&#34;color:#ff9f43&#34;&gt;1500&lt;/span&gt;    3.5
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chr1    &lt;span style=&#34;color:#ff9f43&#34;&gt;1500&lt;/span&gt;    &lt;span style=&#34;color:#ff9f43&#34;&gt;2000&lt;/span&gt;    2.1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;converting-file-formats&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#converting-file-formats&#34;&gt;
+        #
+    &lt;/a&gt;
+    Converting File Formats
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Can one convert one file to another? yes of course. you need some convertion tools or workflows to achieve such task (e.g., &lt;a href=&#34;https://bedtools.readthedocs.io/en/latest/&#34;&gt;BEDTools&lt;/a&gt;, &lt;a href=&#34;https://hgdownload.soe.ucsc.edu/admin/exe/&#34;&gt;UCSC tools&lt;/a&gt;, &lt;a href=&#34;https://deeptools.readthedocs.io/en/latest/&#34;&gt;deepTools&lt;/a&gt; ..).&lt;/p&gt;
+&lt;h3 id=&#34;bed-to-gtf-conversion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#bed-to-gtf-conversion&#34;&gt;
+        ##
+    &lt;/a&gt;
+    BED to GTF Conversion
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;Converting a BED file to a GTF file involves transforming BED regions into GTF features.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Example using awk&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;awk &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;BEGIN{OFS=&amp;#34;\t&amp;#34;} {print $1, &amp;#34;custom&amp;#34;, &amp;#34;exon&amp;#34;, $2+1, $3, &amp;#34;.&amp;#34;, &amp;#34;.&amp;#34;, &amp;#34;.&amp;#34;, &amp;#34;gene_id \&amp;#34;&amp;#34;$4&amp;#34;\&amp;#34;;&amp;#34;}&amp;#39;&lt;/span&gt; input.bed &amp;gt; output.gtf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BEGIN{OFS=&amp;quot;\t&amp;quot;}&lt;/code&gt; sets the Output Field Separator (OFS) to a tab character.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;print&lt;/code&gt; statement creates the 9 GTF columns which are first column from BED (&lt;code&gt;$1&lt;/code&gt;), hard-coded source field (&lt;code&gt;&amp;quot;custom&amp;quot;&lt;/code&gt;), hard-coded feature type (&lt;code&gt;&amp;quot;exon&amp;quot;&lt;/code&gt;), second column from BED plus 1 (&lt;code&gt;$2+1&lt;/code&gt;), third column from BED (&lt;code&gt;$3&lt;/code&gt;), three dots for score, strand, and frame fields (&lt;code&gt;&amp;quot;.&amp;quot;, &amp;quot;.&amp;quot;, &amp;quot;.&amp;quot;&lt;/code&gt;) and attributes field (&lt;code&gt;&amp;quot;gene_id \&amp;quot;&amp;quot;$4&amp;quot;\&amp;quot;;&amp;quot;&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bambed-to-bedgraph-conversion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#bambed-to-bedgraph-conversion&#34;&gt;
+        ##
+    &lt;/a&gt;
+    BAM/BED to BedGraph Conversion
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;To convert a BED file to a BedGraph file, you need to include a value for each region. This can represent signal intensity or read depth or covarage.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example of BAM to BedGraph using BEDTools&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bedtools genomecov -ibam input.bam -bg &amp;gt; output.bedgraph
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;bedtools genomecov&lt;/code&gt; is a command from the BEDTools suite used to compute the coverage of features in a BED file across a genome.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-ibam &lt;/code&gt; flag specifies that the input is in BAM format and &lt;code&gt;input.bam&lt;/code&gt; is the input BAM file containing aligned sequencing reads.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-bg&lt;/code&gt; option tells the tool to output in BedGraph format.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Example of BAM to BedGraph using Samtools and awk&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# First, sort the bam file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;samtools sort -o sorted_input.bam input.bam
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# Second, calculate depth and convert to BedGraph&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;samtools depth -a sorted_input.bam | awk &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;BEGIN {OFS=&amp;#34;\t&amp;#34;} {print $1, $2-1, $2, $3}&amp;#39;&lt;/span&gt; &amp;gt; output.bedgraph
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;First step is Sorting the BAM file.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;samtools sort&lt;/code&gt; is a command used to sort a BAM file.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-o&lt;/code&gt; flag pecifies the output of sorted BAM file (&lt;code&gt;sorted_input.bam&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;input.bam&lt;/code&gt; is the BAM file to be sorted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Second step is converting to BedGraph.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;samtools depth&lt;/code&gt; is a command for calculating covarage at each position and &lt;code&gt;-a&lt;/code&gt; flag reports coverage at all positions, including those with zero coverage.&lt;/li&gt;
+&lt;li&gt;As in BED to GTF conversion, &lt;code&gt;BEGIN {OFS=&amp;quot;\t&amp;quot;}&lt;/code&gt; sets output field separator to tab, &lt;code&gt;{print $1, $2-1, $2, $3}&lt;/code&gt;prints namely chromosome, start position (converted to 0-based), end position and coverage value.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Example of BED to BedGraph using BEDTools&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bedtools genomecov -i input.bed -bg -g genome.txt &amp;gt; output.bedgraph
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;This command follows the same principle as the BAM to BedGraph conversion using BEDTools, with one key difference: when using a BED file as input, you must provide chromosome sizes.&lt;/li&gt;
+&lt;li&gt;The flag &lt;code&gt;-i&lt;/code&gt; specifies the input BED file (input.bed) containing the genomic regions for which coverage is to be calculated.&lt;/li&gt;
+&lt;li&gt;Last option &lt;code&gt;-g&lt;/code&gt; specifies a genome file (&lt;code&gt;genome.txt&lt;/code&gt;) that contains the sizes of the chromosomes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bedgraph-to-bigwigbigwig-to-bedgraph-conversion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#bedgraph-to-bigwigbigwig-to-bedgraph-conversion&#34;&gt;
+        ##
+    &lt;/a&gt;
+    BedGraph to BigWig/BigWig to BedGraph Conversion
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;p&gt;BigWig is a compressed, indexed format designed for efficient visualization in genome browsers. You can convert between BigWig and BedGraph formats using UCSC Genome Browser tools such as &lt;code&gt;bedGraphToBigWig&lt;/code&gt; and &lt;code&gt;bigWigToBedGraph&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example using UCSC tool&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# Convert BedGraph to BigWig&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bedGraphToBigWig input.bedgraph genome.txt output.bw
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;# Convert BigWig to BedGraph&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bigWigToBedGraph input.bw output.bedgraph
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;bedGraphToBigWig&lt;/code&gt; and &lt;code&gt;bigWigToBedGraph&lt;/code&gt; are command-line tools from the UCSC Genome Browser utilities.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;input.bedgraph&lt;/code&gt; file contains continuous-valued data.&lt;/li&gt;
+&lt;li&gt;As with previous conversions, the genome file (&lt;code&gt;genome.txt&lt;/code&gt;) containing chromosome sizes is mandatory for the BedGraph to BigWig conversion&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;output.bw&lt;/code&gt; is the resulting BigWig file, which stores the same data in an indexed binary format.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Since NarrowPeak files share the same column structure as BED files, you can use similar tools to convert them into BedGraph, BigWig, or GTF formats.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;convert-narrowpeak-to-bedgraph&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#convert-narrowpeak-to-bedgraph&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Convert NarrowPeak to BedGraph
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;awk &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;BEGIN{OFS=&amp;#34;\t&amp;#34;} {print $1, $2, $3, $7}&amp;#39;&lt;/span&gt; input.narrowPeak &amp;gt; output.bedgraph
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;This &lt;code&gt;awk&lt;/code&gt; command extracts the chromosome, start position, end position, and signal value (&lt;code&gt;$7&lt;/code&gt;) to create a BedGraph file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;convert-narrowpeak-to-gtf&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#convert-narrowpeak-to-gtf&#34;&gt;
+        ##
+    &lt;/a&gt;
+    Convert NarrowPeak to GTF
+&lt;/div&gt;
+&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;awk &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;BEGIN{OFS=&amp;#34;\t&amp;#34;} {print $1, &amp;#34;custom&amp;#34;, &amp;#34;peak&amp;#34;, $2+1, $3, &amp;#34;.&amp;#34;, $6, &amp;#34;.&amp;#34;, &amp;#34;peak_id \&amp;#34;&amp;#34;$4&amp;#34;\&amp;#34;; signal_value \&amp;#34;&amp;#34;$7&amp;#34;\&amp;#34;;&amp;#34;}&amp;#39;&lt;/span&gt; input.narrowPeak &amp;gt; output.gtf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;This &lt;code&gt;awk&lt;/code&gt; command formats the NarrowPeak data into GTF format, adjusting the start position to 1-based and including attributes like &lt;code&gt;peak_id&lt;/code&gt; and &lt;code&gt;signal_value&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If needed, sort BedGraph files using the Unix sort command:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sort -k1,1 -k2,2n input.bedgraph &amp;gt; sorted.bedgraph
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Test Post</title>

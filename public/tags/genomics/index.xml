@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>atakan ayden</title>
-    <link>/</link>
-    <description>atakan ayden</description>
+    <title>Genomics on atakan ayden</title>
+    <link>/tags/genomics/</link>
+    <description>atakan ayden (Genomics)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -21,7 +21,7 @@
     
     <lastBuildDate>Tue, 03 Dec 2024 14:50:20 +0100</lastBuildDate>
     
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/genomics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -388,48 +388,6 @@
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sort -k1,1 -k2,2n input.bedgraph &amp;gt; sorted.bedgraph
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    
-    <item>
-      <title>Ideas</title>
-      <link>/about/ideas/</link>
-      <pubDate>Fri, 01 Nov 2024 16:15:15 +0100</pubDate>
-      <author>atakanayden@gmail.com (Atakan Ayden)</author>
-      <guid>/about/ideas/</guid>
-      <description>&lt;h1 id=&#34;list-of-ideas-for-the-blog&#34; &gt;
-&lt;div&gt;
-    &lt;a href=&#34;#list-of-ideas-for-the-blog&#34;&gt;
-        ##
-    &lt;/a&gt;
-    List of ideas for the blog.
-&lt;/div&gt;
-&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Finding prime factors of a number. Comparison of different algorithms like trial division, trial division with 2 and 3, Pollard&amp;rsquo;s rho, quadratic sieve, etc. &lt;a href=&#34;https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes&#34;&gt;see Sieve of Eratosthenes&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Dali&amp;rsquo;s art through scientific progress.&lt;/li&gt;
-&lt;li&gt;single cell clustering using sctype and cellmarker2.0&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>/about/about-me/</link>
-      <pubDate>Wed, 30 Oct 2024 18:48:16 +0100</pubDate>
-      <author>atakanayden@gmail.com (Atakan Ayden)</author>
-      <guid>/about/about-me/</guid>
-      <description>&lt;p&gt;Hi, my name is Atakan. I&amp;rsquo;m a computational biologist by training, but I&amp;rsquo;m also interested in software development and data science.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Test Post</title>
-      <link>/posts/test-post/</link>
-      <pubDate>Wed, 30 Oct 2024 18:31:11 +0100</pubDate>
-      <author>atakanayden@gmail.com (Atakan Ayden)</author>
-      <guid>/posts/test-post/</guid>
-      <description>&lt;p&gt;This is a test post.&lt;/p&gt;
-</description>
     </item>
     
   </channel>
