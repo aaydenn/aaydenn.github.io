@@ -1,9 +1,8 @@
 +++
-title: "Can we cluster countries based on trend lines through time?"
-output: html_document
-tags = ["r", "python", "worlddata", "distance"]
-draft: true
-date: "2024-11-21"
+title = 'Can we cluster countries based on trend lines through time?'
+tags = ['r', 'python', 'worlddata', 'distance']
+draft = true
+date = '2024-11-21T18:31:11+01:00'
 +++
 
 ```{r}
@@ -51,7 +50,7 @@ cosine <- function(x, y) {
 
 tanimoto <- function(x, y, weighted = TRUE) {
   if (weighted) {
-    return(1 - (length(intersect(x, y)) / lenght(x) + length(y) - length(intersect(x, y))))
+    return(1 - (length(intersect(x, y)) / length(x) + length(y) - length(intersect(x, y))))
   }
   return(1 - (sum(x * y) / (sum(sum(x ^ 2), sum(y ^ 2)) - sum(x * y))))
 }
